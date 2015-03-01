@@ -10,9 +10,15 @@ read lastname
 echo "Please enter the new user's email address"
 read email
 password="$(date | md5sum | head -c 5)"
-useradd -G developers -m $firstinit$lastname -p $password
+if [[ $(cat /etc/group) | grep 'developers' ]]
+	then
+	groupadd developers
+	useradd -G developers -m $firstinit$lastname -p $password
+else
+	useradd -G developers -m $firstinit$lastname -p $password
+fi
 echo "Your account has been created. username:"$firstinit$lastname" password:"$password | mail -s "New User" $email
 echo "User "$firstinit$lastname" has been created."
-grep developers /etc/group
+
 exit 
 
