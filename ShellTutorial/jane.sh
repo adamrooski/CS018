@@ -5,11 +5,10 @@ while [ $RESPONSE != "goodbye" ]
 do
 IFS=':' 
 read -r RESPONSE
-if [[ $RESPONSE == *"Hello"* ]]
+if [[ $RESPONSE == *"hello"* -o $RESPONSE == *"Hello"* ]]
 then
   echo "Helloooooo Doooollly!!!!";
-fi
-if [[ $RESPONSE == *"your name"* ]]
+elif [[ $RESPONSE == *"your name"* ]]
 then
   echo "My name is Jane, what is yours?";
 fi

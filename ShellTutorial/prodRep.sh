@@ -11,11 +11,11 @@ fi
 }
 #WORD BY WORD FUNCTION
 wbw() {
-CONTENT=( `cat "$FILENAME"` )
-for LINE in "${CONTENT[@]}"
+CONTENT=`cat "$FILENAME"`
+for LINE in $CONTENT
 do
 	read -a ELEMENT -d "\n" <<< "$LINE"
-	echo "${ELEMENT[0]} ${ELEMENT[1]} ${ELEMENT[2]}"
+	echo "${ELEMENT[0]}"+"${ELEMENT[1]} ${ELEMENT[2]}"
 done
 }
 #CREATE PRODUCT REPORT FILE
